@@ -4,7 +4,7 @@ const ResponsiveSearchBar = () => {
   return (
     <label
       className='mx-auto my-20 relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300'
-      for='search-bar'>
+      htmlFor='search-bar'>
       <input
         id='search-bar'
         placeholder='Type token symbol, contract address'
@@ -24,7 +24,7 @@ const ResponsiveSearchBar = () => {
                 cy='12'
                 r='10'
                 stroke='currentColor'
-                stroke-width='4'></circle>
+                strokeWidth='4'></circle>
               <path
                 className='opacity-75'
                 fill='currentColor'

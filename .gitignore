@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.test
+.env.local
+.env.*.local
+
+# Parcel cache
+.cache/
+
+# Vite cache
+dist/
+.vite/
+
+# Build output
+build/
+out/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache

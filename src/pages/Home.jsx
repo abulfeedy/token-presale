@@ -1,11 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PresaleCard from "../components/PresaleCard";
 import MemecoinTable from "../components/MemecoinTable";
-import { WalletContext } from "../contexts/WalletContext";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import ResponsiveSearchBar from "../components/Search";
+import ConnectWalletButton from "../components/ConnectWalletButton";
 
 // Mock presale data
 const mockPresales = [
@@ -161,7 +161,6 @@ const mockMemecoins = [
 ];
 
 function Home() {
-  const { connectWallet, account } = useContext(WalletContext);
   const navigate = useNavigate();
   const [presales, setPresales] = useState([]);
   const [memecoins, setMemecoins] = useState([]);
@@ -213,11 +212,8 @@ function Home() {
             Explore Presales
           </button>
 
-          <button
-            className='btn-secondary px-8 py-3 text-lg'
-            onClick={connectWallet}
-            disabled={account}>
-            {account ? "Wallet Connected" : "Connect Wallet"}
+          <button className='btn-secondary px-8 py-3 text-lg'>
+            <ConnectWalletButton />
           </button>
         </motion.div>
       </section>

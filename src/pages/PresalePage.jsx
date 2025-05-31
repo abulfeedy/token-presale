@@ -1,10 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import { WalletContext } from "../contexts/WalletContext";
+import { useState, useEffect } from "react";
 import CountdownTimer from "../components/CountdownTimer";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
+import ConnectWalletButton from "../components/ConnectWalletButton";
 
 // Mock presale data
 const mockPresales = [
@@ -88,7 +88,6 @@ const mockPresales = [
 function PresalePage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { account, chainId, connectWallet } = useContext(WalletContext);
   const [presale, setPresale] = useState(null);
   const [amount, setAmount] = useState("");
 
@@ -103,14 +102,7 @@ function PresalePage() {
 
   const handlePurchase = (e) => {
     e.preventDefault();
-    if (!account) {
-      toast.error("Please connect your wallet.");
-      return;
-    }
-    if (chainId !== 11155111) {
-      toast.error("Please switch to Sepolia testnet.");
-      return;
-    }
+
     if (!amount || isNaN(amount) || amount <= 0) {
       toast.error("Please enter a valid amount.");
       return;
@@ -140,7 +132,7 @@ function PresalePage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className='py-8'>
+      className='py-8 mt-5'>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
         {/* Main Content */}
         <div className='lg:col-span-2 space-y-8'>
@@ -331,13 +323,9 @@ function PresalePage() {
             )}
 
             {/* Connect Wallet */}
-            {!account && (
-              <button
-                onClick={connectWallet}
-                className='btn-primary w-full py-3'>
-                Connect Wallet
-              </button>
-            )}
+            <button className='btn-primary w-full py-3'>
+              <ConnectWalletButton />
+            </button>
           </div>
         </div>
       </div>
